@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://beddvumcoi0uq"
+path="res://.godot/imported/Flututu1111335 (1) (mp3cut.net).mp3-1f4b3a1d93d5139bab36fc7bd7714e8f.mp3str"
+
+[deps]
+
+source_file="res://assets/Flututu1111335 (1) (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/Flututu1111335 (1) (mp3cut.net).mp3-1f4b3a1d93d5139bab36fc7bd7714e8f.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

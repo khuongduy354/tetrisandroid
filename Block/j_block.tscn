@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyn8sm05fl4m"]
+
+[ext_resource type="PackedScene" uid="uid://bx7n4wstdwswg" path="res://Block/tetris_block.tscn" id="1_1udst"]
+[ext_resource type="PackedScene" uid="uid://307l1yee8sfv" path="res://Block/tetris_blocktile.tscn" id="2_h4a21"]
+
+[node name="JBlock" instance=ExtResource("1_1udst")]
+
+[node name="Blocktile" parent="BlockTiles" index="0" instance=ExtResource("2_h4a21")]
+position = Vector2(-16, 16)
+
+[node name="Blocktile2" parent="BlockTiles" index="1" instance=ExtResource("2_h4a21")]
+position = Vector2(16, 16)
+
+[node name="Blocktile3" parent="BlockTiles" index="2" instance=ExtResource("2_h4a21")]
+position = Vector2(48, 16)
+
+[node name="Blocktile4" parent="BlockTiles" index="3" instance=ExtResource("2_h4a21")]
+position = Vector2(-16, -16)

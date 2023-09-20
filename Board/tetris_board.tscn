@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjn6k2mcog3pr"]
+
+[ext_resource type="Script" path="res://Board/tetris_board.gd" id="1_yvwea"]
+
+[node name="TetrisBoard" type="Node2D"]
+script = ExtResource("1_yvwea")
+
+[node name="spawn_pos" type="Marker2D" parent="."]
+position = Vector2(64, 64)
