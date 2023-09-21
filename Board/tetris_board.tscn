@@ -6,4 +6,4 @@
 script = ExtResource("1_yvwea")
 
 [node name="spawn_pos" type="Marker2D" parent="."]
-position = Vector2(64, 64)
+position = Vector2(128, 64)

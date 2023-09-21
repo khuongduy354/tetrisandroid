@@ -5,14 +5,16 @@
 
 [node name="SBlock" instance=ExtResource("1_0avbk")]
 
-[node name="Blocktile" parent="BlockTiles" index="0" instance=ExtResource("2_3a336")]
-position = Vector2(-16, 16)
-
-[node name="Blocktile2" parent="BlockTiles" index="1" instance=ExtResource("2_3a336")]
+[node name="BlockTiles" parent="." index="2"]
 position = Vector2(16, 16)
 
+[node name="Blocktile" parent="BlockTiles" index="0" instance=ExtResource("2_3a336")]
+position = Vector2(-32, 0)
+
+[node name="Blocktile2" parent="BlockTiles" index="1" instance=ExtResource("2_3a336")]
+
 [node name="Blocktile3" parent="BlockTiles" index="2" instance=ExtResource("2_3a336")]
-position = Vector2(16, -16)
+position = Vector2(0, -32)
 
 [node name="Blocktile4" parent="BlockTiles" index="3" instance=ExtResource("2_3a336")]
-position = Vector2(48, -16)
+position = Vector2(32, -32)
