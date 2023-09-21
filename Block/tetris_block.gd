@@ -8,7 +8,21 @@ func _initialize(b:Board):
 
 func _ready(): 
 	pass
-	
+func drop_tile(baseline): 
+	for tile in $BlockTiles.get_children(): 
+		var pos = board.map_to_board(tile.global_position)
+		if pos.y < baseline: 
+			pos.y += 1
+			tile.global_position = board.map_to_world(pos)
+func clear_tile(pos): 
+	for tile in $BlockTiles.get_children(): 
+		var tile_pos =  board.map_to_board(tile.global_position)
+		if tile_pos == pos: 
+			$BlockTiles.remove_child(tile)
+			tile.queue_free()
+			if $BlockTiles.get_child_count() ==0: 
+				queue_free()
+			return tile
 #func get_tile_from_pos(coor): 
 #	for tile in $BlockTiles.get_children(): 
 #		if Global.map_to_board(tile.global_position) == coor:

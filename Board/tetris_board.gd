@@ -11,7 +11,6 @@ var still_tiles = []
 func map_to_board(coor:Vector2): 
 	coor-=global_position
 	var board_pos = (coor-Vector2(Global.HALF_CELLSIZE, Global.HALF_CELLSIZE))/Global.CELL_SIZE
-	print("nofloor",board_pos)
 	return Vector2(int(board_pos.x),int(board_pos.y))
 	
 func map_to_world(coor:Vector2): 
@@ -40,8 +39,7 @@ func check_colliding(tile,additional_pos):
 			
 	return false
 var rotated_pos=[]
-func tile_in_list(tile): 
-	var pos = map_to_board(tile.global_position )
+func tile_in_list(pos): 
 	for still_tile in still_tiles: 
 		var still_pos = map_to_board(still_tile.global_position)
 		if still_pos == pos: 
@@ -49,23 +47,59 @@ func tile_in_list(tile):
 	return false
 func check_tile_colliding_rotation(blocktiles,deg):
 #	blocktiles.rotate(deg_to_rad(deg))
-	blocktiles.rotation_degrees+=90
+	blocktiles.rotation_degrees+=deg
 
-#	blocktiles.rotation_degrees=fmod(blocktiles.rotation_degrees,360)
+	blocktiles.rotation_degrees=fmod(blocktiles.rotation_degrees,360)
 	for tile in blocktiles.get_children(): 
 		# check border 
 		var test_pos = map_to_board(tile.global_position)
 
 		
 		# check collide rotation 
-		if tile_in_list(tile) or is_border(test_pos): 
-			blocktiles.rotation_degrees-=90
+		if tile_in_list(map_to_board(tile.global_position)) or is_border(test_pos): 
+			blocktiles.rotation_degrees-=deg
 			return true
 	return false
+
+func remove_still_tile(tile): 
+	for i in range(still_tiles.size()): 
+		var still_tile = still_tiles[i]
+		if still_tile == tile: 
+			still_tiles.remove_at(i)
+			return
+func check_lines(blocktiles): 
+	# get all lines
+	var lines_cleared_list = []
+	for y in range(0,board_rows): 
+		var line_cleared =true
+		for x in range(0,board_cols):
+			if !tile_in_list(Vector2(x,y)):
+				line_cleared=false
+		if line_cleared: 
+			lines_cleared_list.push_back(y)
+	
+	var length = lines_cleared_list.size()
+	if length>0:
+	# clear lines	
+		for y in lines_cleared_list: 
+			for x in range(0,board_cols): 
+				for block in $Blocks.get_children():
+					var tile = block.clear_tile(Vector2(x,y))
+					remove_still_tile(tile)
+	# shift
+		for i in range(lines_cleared_list.size()):
+			var base_line = lines_cleared_list[i] 
+			for block in $Blocks.get_children(): 
+				block.drop_tile(base_line)
+#
+#		emit_signal("clear_line",lines_cleared_list.size())
+
+
+	
 func _on_to_still(tiles): 
 	for tile in tiles.get_children(): 
 		still_tiles.push_back(tile)
-		print("still:",map_to_board(tile.global_position))
+	check_lines(tiles)
 	spawn_block()
 func spawn_block(): 
 	var i = randi()%7
@@ -87,7 +121,7 @@ func spawn_block():
 			scene = "res://Block/z_block.tscn"
 	var node = load(scene).instantiate() 
 	node._initialize(self)
-	add_child(node)
+	$Blocks.add_child(node)
 	node.global_position = $spawn_pos.global_position
 func draw_board(): 
 	for row in range(board_rows): 
