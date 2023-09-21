@@ -20,13 +20,17 @@ func _ready():
 	spawn_block()
 	Events.connect("to_still",Callable(self,"_on_to_still"))
 
-func check_colliding(pos): 
-	pos = map_to_board(pos)
-	print(pos)
+func check_colliding(tile,additional_pos): 
+	var test_pos = map_to_board(tile.global_position)+additional_pos
+	
 	# check border 
-	if pos.y >= board_rows or pos.x < 0 or pos.x >= board_cols: 
+	if test_pos.y >= board_rows or test_pos.x < 0 or test_pos.x >= board_cols: 
 		return true
-	pass 
+	for still_tile in still_tiles: 
+		var still_pos = map_to_board(still_tile.global_position)
+		if still_pos == test_pos: 
+			return true
+	return false
 
 func _on_to_still(tiles): 
 	for tile in tiles.get_children(): 

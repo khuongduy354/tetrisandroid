@@ -30,29 +30,38 @@ var rotating = false
 func down(): 
 	if rotating:
 		return 
+
 	var next_pos =Vector2($BlockTiles.global_position.x,$BlockTiles.global_position.y + Global.CELL_SIZE)
-#	if Global.check_tile_colliding($BlockTiles,addition_pos): 
-#		set_still() 
-#		return 
+
+	# collisions 
 	for tile in $BlockTiles.get_children(): 
-		var test_pos = tile.global_position + Vector2(0,Global.CELL_SIZE)
-		if board.check_colliding(test_pos): 
+		var additional_pos = Vector2(0,1)
+		if board.check_colliding(tile,additional_pos): 
 			set_still()
 			return 
+
 	$BlockTiles.global_position = next_pos
 func left():
 	var next_pos = Vector2($BlockTiles.global_position.x-Global.CELL_SIZE, $BlockTiles.global_position.y)
-	var addition_pos = Vector2(-Global.CELL_SIZE,0)
-	if Global.check_tile_colliding($BlockTiles,addition_pos): 
-		return 
+	
+	# collision 
+	for tile in $BlockTiles.get_children(): 
+		var addition_pos = Vector2(-1,0)
+		if board.check_colliding(tile,addition_pos): 
+			return 
+	
 	$BlockTiles.global_position = next_pos
 func right(): 
 	var next_pos = Vector2($BlockTiles.global_position.x+Global.CELL_SIZE,$BlockTiles.global_position.y)
-	var addition_pos = Vector2(Global.CELL_SIZE,0)
 	
-	if Global.check_tile_colliding($BlockTiles,addition_pos): 
-		return
+	# collision 
+	for tile in $BlockTiles.get_children(): 
+		var addition_pos = Vector2(1,0)
+		if board.check_colliding(tile,addition_pos): 
+			return 
+	
 	$BlockTiles.global_position = next_pos
+
 func rotate_block(): 
 	rotating = true 
 	Global.check_tile_colliding_rotation($BlockTiles,90)
