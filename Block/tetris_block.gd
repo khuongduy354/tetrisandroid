@@ -56,6 +56,7 @@ func down():
 
 	$BlockTiles.global_position = next_pos
 func left():
+	print_tiles()
 	var next_pos = Vector2($BlockTiles.global_position.x-Global.CELL_SIZE, $BlockTiles.global_position.y)
 	
 	# collision 
@@ -101,7 +102,6 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_left"): 
 		if $down_cooldown.is_stopped() :
 			left()
-			print_tiles()
 			$down_cooldown.start()
 	if Input.is_action_pressed("ui_right"): 
 		if $down_cooldown.is_stopped():

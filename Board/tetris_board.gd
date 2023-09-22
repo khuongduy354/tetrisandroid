@@ -7,11 +7,18 @@ var board_width = board_cols * Global.CELL_SIZE
 var board_height = board_rows * Global.CELL_SIZE
 var still_tiles = []
 
+func floor_zero(pos): 
+	if pos.x == -0: 
+		pos.x =0
+	if pos.y == -0: 
+		pos.y = 0
+	return pos 
+	pass 
 
 func map_to_board(coor:Vector2): 
 	coor-=global_position
 	var board_pos = (coor-Vector2(Global.HALF_CELLSIZE, Global.HALF_CELLSIZE))/Global.CELL_SIZE
-	return Vector2(int(board_pos.x),int(board_pos.y))
+	return Vector2(roundi(board_pos.x),roundi(board_pos.y))
 	
 func map_to_world(coor:Vector2): 
 	var world_pos = coor * Global.CELL_SIZE+Vector2(Global.HALF_CELLSIZE,Global.HALF_CELLSIZE)
@@ -46,9 +53,7 @@ func tile_in_list(pos):
 			return true
 	return false
 func check_tile_colliding_rotation(blocktiles,deg):
-#	blocktiles.rotate(deg_to_rad(deg))
-	blocktiles.rotation_degrees+=deg
-
+	blocktiles.rotate(deg_to_rad(deg))
 	blocktiles.rotation_degrees=fmod(blocktiles.rotation_degrees,360)
 	for tile in blocktiles.get_children(): 
 		# check border 
@@ -57,14 +62,14 @@ func check_tile_colliding_rotation(blocktiles,deg):
 		
 		# check collide rotation 
 		if tile_in_list(map_to_board(tile.global_position)) or is_border(test_pos): 
-			blocktiles.rotation_degrees-=deg
+			blocktiles.rotate(deg_to_rad(-deg))
 			return true
 	return false
 
-func remove_still_tile(tile): 
+func remove_still_tile(tile_pos): 
 	for i in range(still_tiles.size()): 
 		var still_tile = still_tiles[i]
-		if still_tile == tile: 
+		if map_to_board(still_tile.global_position) == tile_pos: 
 			still_tiles.remove_at(i)
 			return
 func check_lines(blocktiles): 
@@ -83,9 +88,9 @@ func check_lines(blocktiles):
 	# clear lines	
 		for y in lines_cleared_list: 
 			for x in range(0,board_cols): 
+				remove_still_tile(Vector2(x,y))
 				for block in $Blocks.get_children():
-					var tile = block.clear_tile(Vector2(x,y))
-					remove_still_tile(tile)
+					block.clear_tile(Vector2(x,y))
 	# shift
 		for i in range(lines_cleared_list.size()):
 			var base_line = lines_cleared_list[i] 
@@ -95,12 +100,18 @@ func check_lines(blocktiles):
 #		emit_signal("clear_line",lines_cleared_list.size())
 
 
-	
+func print_still_board(): 
+	var result = []
+	for tile in still_tiles: 
+		var pos = map_to_board(tile.global_position)
+		result.push_back(pos)
+	print("STILL BOARD",result)
 func _on_to_still(tiles): 
 	for tile in tiles.get_children(): 
 		still_tiles.push_back(tile)
 	check_lines(tiles)
 	spawn_block()
+	print_still_board()
 func spawn_block(): 
 	var i = randi()%7
 	var scene =""
