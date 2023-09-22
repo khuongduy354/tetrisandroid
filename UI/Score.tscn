@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0lnutb2khtxu"]
+
+[ext_resource type="Texture2D" uid="uid://vcr488mhmvwy" path="res://assets/fullasset/8.png" id="1_6lh4d"]
+[ext_resource type="Script" path="res://UI/Score.gd" id="1_m8lbo"]
+
+[node name="Score" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 93.0
+offset_top = 70.0
+offset_right = 93.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m8lbo")
+
+[node name="placeholders" type="Node2D" parent="."]
+
+[node name="1" type="Sprite2D" parent="placeholders"]
+self_modulate = Color(1, 1, 1, 0.2)
+texture = ExtResource("1_6lh4d")
+
+[node name="2" type="Sprite2D" parent="placeholders"]
+self_modulate = Color(1, 1, 1, 0.2)
+position = Vector2(30, 0)
+texture = ExtResource("1_6lh4d")
+
+[node name="3" type="Sprite2D" parent="placeholders"]
+self_modulate = Color(1, 1, 1, 0.2)
+position = Vector2(60, 0)
+texture = ExtResource("1_6lh4d")
+
+[node name="4" type="Sprite2D" parent="placeholders"]
+self_modulate = Color(1, 1, 1, 0.2)
+position = Vector2(90, 0)
+texture = ExtResource("1_6lh4d")
+
+[node name="5" type="Sprite2D" parent="placeholders"]
+self_modulate = Color(1, 1, 1, 0.2)
+position = Vector2(119.5, 0)
+texture = ExtResource("1_6lh4d")
+
+[node name="6" type="Sprite2D" parent="placeholders"]
+self_modulate = Color(1, 1, 1, 0.2)
+position = Vector2(149, 0)
+texture = ExtResource("1_6lh4d")
+
+[node name="realscores" type="Node2D" parent="."]
