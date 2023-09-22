@@ -3,12 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://dw3134bfhtgll" path="res://assets/fullasset/Orange But.png" id="1_owwck"]
 [ext_resource type="Texture2D" uid="uid://dn0pel5507010" path="res://assets/fullasset/Shadow behind But.png" id="2_b6t1x"]
 
-[node name="Button" type="TextureButton"]
+[node name="Button" type="TouchScreenButton"]
 texture_normal = ExtResource("1_owwck")
 
 [node name="ShadowBehindBut" type="TextureRect" parent="."]
 z_index = -1
-layout_mode = 0
 offset_left = -21.0
 offset_top = -87.0
 offset_right = 91.0

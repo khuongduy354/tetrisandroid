@@ -1,14 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://blx508u5exqs"]
 
-[ext_resource type="PackedScene" uid="uid://dwc2w8gpusp4o" path="res://UI/Button.tscn" id="1_wbttx"]
 [ext_resource type="Texture2D" uid="uid://dx5157in8fir0" path="res://assets/fullasset/Blue But.png" id="2_mi6xv"]
+[ext_resource type="Texture2D" uid="uid://dn0pel5507010" path="res://assets/fullasset/Shadow behind But.png" id="2_o76ep"]
 
-[node name="SmallButton" instance=ExtResource("1_wbttx")]
+[node name="SmallButton" type="TouchScreenButton"]
 texture_normal = ExtResource("2_mi6xv")
 
-[node name="ShadowBehindBut" parent="." index="0"]
+[node name="ShadowBehindBut" type="TextureRect" parent="."]
+z_index = -1
 offset_left = -13.0
 offset_top = -56.0
 offset_right = 99.0
 offset_bottom = 144.0
 scale = Vector2(0.94815, 0.958271)
+texture = ExtResource("2_o76ep")

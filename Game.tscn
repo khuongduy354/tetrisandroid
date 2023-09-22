@@ -47,10 +47,7 @@ texture = ExtResource("6_kmkoh")
 position = Vector2(28, 28)
 
 [node name="SmallButton" parent="ButtonsGroup" instance=ExtResource("7_6d42k")]
-offset_left = 466.0
-offset_top = 897.0
-offset_right = 548.0
-offset_bottom = 979.0
+position = Vector2(408, 897)
 texture_normal = ExtResource("8_glm31")
 
 [node name="PauseStart" type="Sprite2D" parent="ButtonsGroup/SmallButton"]
@@ -59,10 +56,7 @@ scale = Vector2(0.42219, 0.42219)
 texture = ExtResource("17_707w8")
 
 [node name="SmallButton2" parent="ButtonsGroup" instance=ExtResource("7_6d42k")]
-offset_left = 548.0
-offset_top = 897.0
-offset_right = 630.0
-offset_bottom = 979.0
+position = Vector2(497, 897)
 
 [node name="Sound" type="Sprite2D" parent="ButtonsGroup/SmallButton2"]
 position = Vector2(42.9999, -36.9999)
@@ -70,10 +64,7 @@ scale = Vector2(0.512316, 0.512316)
 texture = ExtResource("16_r5nef")
 
 [node name="SmallButton3" parent="ButtonsGroup" instance=ExtResource("7_6d42k")]
-offset_left = 385.0
-offset_top = 897.0
-offset_right = 467.0
-offset_bottom = 979.0
+position = Vector2(315, 897)
 texture_normal = ExtResource("7_fnhen")
 
 [node name="Reset" type="Sprite2D" parent="ButtonsGroup/SmallButton3"]
@@ -82,10 +73,7 @@ scale = Vector2(0.392261, 0.392261)
 texture = ExtResource("9_lbit0")
 
 [node name="Button" parent="ButtonsGroup" instance=ExtResource("5_l7y8e")]
-offset_left = 427.0
-offset_top = 985.0
-offset_right = 549.0
-offset_bottom = 1107.0
+position = Vector2(372, 978)
 scale = Vector2(1.37698, 1.37698)
 
 [node name="RotateDirection" type="Sprite2D" parent="ButtonsGroup/Button"]
@@ -94,10 +82,7 @@ scale = Vector2(0.46495, 0.46495)
 texture = ExtResource("10_wfx2f")
 
 [node name="Button2" parent="ButtonsGroup" instance=ExtResource("5_l7y8e")]
-offset_left = 101.0
-offset_top = 897.0
-offset_right = 223.0
-offset_bottom = 1019.0
+position = Vector2(70, 912)
 scale = Vector2(0.724868, 0.724868)
 
 [node name="QuickDownLevels+" type="Sprite2D" parent="ButtonsGroup/Button2"]
@@ -106,10 +91,7 @@ scale = Vector2(0.420499, 0.420499)
 texture = ExtResource("13_btuok")
 
 [node name="Button3" parent="ButtonsGroup" instance=ExtResource("5_l7y8e")]
-offset_left = 101.0
-offset_top = 1028.0
-offset_right = 223.0
-offset_bottom = 1150.0
+position = Vector2(69, 1046)
 scale = Vector2(0.724868, 0.724868)
 
 [node name="DownLevel-" type="Sprite2D" parent="ButtonsGroup/Button3"]
@@ -118,10 +100,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("12_td8vb")
 
 [node name="Button4" parent="ButtonsGroup" instance=ExtResource("5_l7y8e")]
-offset_left = 174.0
-offset_top = 960.0
-offset_right = 296.0
-offset_bottom = 1082.0
+position = Vector2(139, 979)
 scale = Vector2(0.724868, 0.724868)
 
 [node name="RightSpeed+" type="Sprite2D" parent="ButtonsGroup/Button4"]
@@ -130,10 +109,7 @@ scale = Vector2(0.432, 0.5)
 texture = ExtResource("11_tgmrj")
 
 [node name="Button5" parent="ButtonsGroup" instance=ExtResource("5_l7y8e")]
-offset_left = 25.0
-offset_top = 960.0
-offset_right = 147.0
-offset_bottom = 1082.0
+position = Vector2(0, 979)
 scale = Vector2(0.724868, 0.724868)
 
 [node name="LeftSpeed-" type="Sprite2D" parent="ButtonsGroup/Button5"]
