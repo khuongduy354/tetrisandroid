@@ -56,7 +56,6 @@ func down():
 
 	$BlockTiles.global_position = next_pos
 func left():
-	print_tiles()
 	var next_pos = Vector2($BlockTiles.global_position.x-Global.CELL_SIZE, $BlockTiles.global_position.y)
 	
 	# collision 

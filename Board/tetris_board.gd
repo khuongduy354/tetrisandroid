@@ -111,7 +111,6 @@ func _on_to_still(tiles):
 		still_tiles.push_back(tile)
 	check_lines(tiles)
 	spawn_block()
-	print_still_board()
 func spawn_block(): 
 	var i = randi()%7
 	var scene =""
