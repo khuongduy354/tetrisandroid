@@ -53,7 +53,7 @@ func down():
 		if board.check_colliding(tile,additional_pos): 
 			set_still()
 			return 
-
+	SfxManager.play(SfxManager.MOVEMENT)
 	$BlockTiles.global_position = next_pos
 func left():
 	var next_pos = Vector2($BlockTiles.global_position.x-Global.CELL_SIZE, $BlockTiles.global_position.y)
@@ -63,7 +63,7 @@ func left():
 		var addition_pos = Vector2(-1,0)
 		if board.check_colliding(tile,addition_pos): 
 			return 
-	
+	SfxManager.play(SfxManager.MOVEMENT)
 	$BlockTiles.global_position = next_pos
 func right(): 
 	var next_pos = Vector2($BlockTiles.global_position.x+Global.CELL_SIZE,$BlockTiles.global_position.y)
@@ -73,7 +73,7 @@ func right():
 		var addition_pos = Vector2(1,0)
 		if board.check_colliding(tile,addition_pos): 
 			return 
-	
+	SfxManager.play(SfxManager.MOVEMENT)
 	$BlockTiles.global_position = next_pos
 
 func rotate_block(): 
@@ -93,7 +93,7 @@ func _physics_process(delta):
 		if $down_cooldown.is_stopped():
 			down()
 			$down_timer.stop()
-#			$down_timer.start()
+			$down_timer.start()
 			$down_cooldown.start()
 	if Input.is_action_just_pressed("ui_up"): 
 		if !rotating: 
@@ -111,4 +111,4 @@ func _physics_process(delta):
 func _on_down_timer_timeout():
 	if still or rotating: 
 		return
-#	down()
+	down()

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://Global.gd"
 Events="*res://Events.gd"
+SfxManager="*res://sfx_manager.tscn"
 
 [rendering]
 

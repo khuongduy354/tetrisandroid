@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://bcbdbi6tf1ctq"]
+
+[ext_resource type="Script" path="res://sfx_manager.gd" id="1_q7qad"]
+[ext_resource type="AudioStream" uid="uid://dg4ohfmu27eg" path="res://assets/sfx/movement_zvQwBm27.mp3" id="2_46577"]
+[ext_resource type="AudioStream" uid="uid://cxf5ey03s2l2l" path="res://assets/sfx/drop.mp3" id="3_flqg1"]
+[ext_resource type="AudioStream" uid="uid://y8x0nqglxhfd" path="res://assets/sfx/click.mp3" id="4_frrly"]
+[ext_resource type="AudioStream" uid="uid://bxhmul60uhcch" path="res://assets/sfx/fail.mp3" id="5_b6rwm"]
+[ext_resource type="AudioStream" uid="uid://bsmvbgufo1lsi" path="res://assets/sfx/clear.mp3" id="6_f350j"]
+
+[node name="SFXManager" type="Node2D"]
+script = ExtResource("1_q7qad")
+
+[node name="move" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_46577")
+volume_db = 5.0
+
+[node name="drop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_flqg1")
+volume_db = 2.506
+
+[node name="click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_frrly")
+volume_db = 10.024
+
+[node name="gameover" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_b6rwm")
+
+[node name="clear" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_f350j")
