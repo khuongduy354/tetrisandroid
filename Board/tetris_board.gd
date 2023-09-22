@@ -10,7 +10,7 @@ var still_tiles = []
 
 func _ready(): 
 	draw_board()
-	spawn_block()
+	start_game()
 	Events.connect("game_over",func():pause_game())
 	Events.connect("to_still",Callable(self,"_on_to_still"))
 
@@ -19,6 +19,7 @@ func _ready():
 func start_game(): 
 	spawn_block()
 func reset_game(): 
+	next_block=null
 	still_tiles=[]
 	for block in $Blocks.get_children(): 
 		block.queue_free()
@@ -39,8 +40,8 @@ func draw_board():
 			var tile =  preload("res://Board/board_tile.tscn").instantiate()
 			add_child(tile)
 			tile.global_position = pos
-
-func spawn_block(): 
+var next_block=null
+func pick_block(): 
 	var i = randi()%7
 	var scene =""
 	match i: 
@@ -60,8 +61,15 @@ func spawn_block():
 			scene = "res://Block/z_block.tscn"
 	var node = load(scene).instantiate() 
 	node._initialize(self)
-	$Blocks.add_child(node)
-	node.global_position = $spawn_pos.global_position
+	next_block = node
+	Events.next.emit(next_block)
+func spawn_block(): 
+	if !next_block: 
+		pick_block()
+	$Blocks.add_child(next_block)
+	next_block.global_position = $spawn_pos.global_position
+	next_block = null
+	pick_block()
 # checkers 
 func check_fail(): 
 	for x in range(board_cols): 

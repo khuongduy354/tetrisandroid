@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://btlvn1d7nrhdg"]
+[gd_scene load_steps=21 format=3 uid="uid://btlvn1d7nrhdg"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_nfwd1"]
 [ext_resource type="PackedScene" uid="uid://bjn6k2mcog3pr" path="res://Board/tetris_board.tscn" id="1_nwyf8"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://cdr6bh6044273" path="res://assets/fullasset/PAUSE START.png" id="17_707w8"]
 [ext_resource type="Texture2D" uid="uid://dh0qjjdhufbo3" path="res://assets/fullasset/NEXT_.png" id="17_qywwd"]
 [ext_resource type="Texture2D" uid="uid://ba15euns8yv3n" path="res://assets/fullasset/SCORE.png" id="18_387oi"]
+[ext_resource type="Script" path="res://Next.gd" id="18_djmah"]
 [ext_resource type="PackedScene" uid="uid://b0lnutb2khtxu" path="res://UI/Score.tscn" id="19_y8m2m"]
 
 [node name="Game" type="Node2D"]
@@ -118,6 +119,10 @@ texture = ExtResource("12_jkafp")
 [node name="Next" type="Sprite2D" parent="."]
 position = Vector2(536, 405)
 texture = ExtResource("17_qywwd")
+script = ExtResource("18_djmah")
+
+[node name="Marker2D" type="Marker2D" parent="Next"]
+position = Vector2(-7, 83)
 
 [node name="Score" type="Sprite2D" parent="."]
 position = Vector2(529, 131)

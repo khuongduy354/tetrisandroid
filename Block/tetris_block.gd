@@ -1,4 +1,5 @@
 extends Node2D
+class_name Block
 
 var still =false 
 var board:Board = null
