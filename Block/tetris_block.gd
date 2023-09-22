@@ -41,6 +41,24 @@ func set_still():
 	$down_timer.stop()
 	
 var rotating = false 
+func instant_down(): 
+	if rotating:
+		return 
+	
+
+
+	# collisions 
+	while true:
+		for tile in $BlockTiles.get_children(): 
+			var additional_pos = Vector2(0,1)
+			if board.check_colliding(tile,additional_pos): 
+				set_still()
+				SfxManager.play(SfxManager.DROP)
+				return
+
+		var next_pos =Vector2($BlockTiles.global_position.x,$BlockTiles.global_position.y + Global.CELL_SIZE)
+		$BlockTiles.global_position = next_pos
+
 func down(): 
 	if rotating:
 		return 
@@ -89,6 +107,8 @@ func print_tiles():
 func _physics_process(delta):
 	if still or rotating: 
 		return
+	if Input.is_action_just_pressed("instant_down"):
+		instant_down()
 	if Input.is_action_pressed("ui_down"): 
 		if $down_cooldown.is_stopped():
 			down()
