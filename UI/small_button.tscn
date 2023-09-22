@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://blx508u5exqs"]
+
+[ext_resource type="PackedScene" uid="uid://dwc2w8gpusp4o" path="res://UI/Button.tscn" id="1_wbttx"]
+[ext_resource type="Texture2D" uid="uid://dx5157in8fir0" path="res://assets/fullasset/Blue But.png" id="2_mi6xv"]
+
+[node name="SmallButton" instance=ExtResource("1_wbttx")]
+texture_normal = ExtResource("2_mi6xv")
+
+[node name="ShadowBehindBut" parent="." index="0"]
+offset_left = -13.0
+offset_top = -56.0
+offset_right = 99.0
+offset_bottom = 144.0
+scale = Vector2(0.94815, 0.958271)

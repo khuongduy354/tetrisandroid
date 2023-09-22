@@ -1,9 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://btlvn1d7nrhdg"]
+[gd_scene load_steps=18 format=3 uid="uid://btlvn1d7nrhdg"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_nfwd1"]
 [ext_resource type="PackedScene" uid="uid://bjn6k2mcog3pr" path="res://Board/tetris_board.tscn" id="1_nwyf8"]
 [ext_resource type="Texture2D" uid="uid://crbhsfu7xx5uo" path="res://assets/fullasset/Screen2.png" id="3_nmvkh"]
 [ext_resource type="Texture2D" uid="uid://dmdykpdcy2fkk" path="res://assets/fullasset/Big Machine.png" id="4_65bfw"]
+[ext_resource type="PackedScene" uid="uid://dwc2w8gpusp4o" path="res://UI/Button.tscn" id="5_l7y8e"]
+[ext_resource type="Texture2D" uid="uid://tgp4rfkqrnxb" path="res://assets/fullasset/Tetris Machine.png" id="6_kmkoh"]
+[ext_resource type="PackedScene" uid="uid://blx508u5exqs" path="res://UI/small_button.tscn" id="7_6d42k"]
+[ext_resource type="Texture2D" uid="uid://c7gnck0cgh81v" path="res://assets/fullasset/Red but.png" id="7_fnhen"]
+[ext_resource type="Texture2D" uid="uid://tlmfsww62qh1" path="res://assets/fullasset/Ellipse 1 copy 2.png" id="8_glm31"]
+[ext_resource type="Texture2D" uid="uid://dvsly6fi7uxqh" path="res://assets/fullasset/RESET.png" id="9_lbit0"]
+[ext_resource type="Texture2D" uid="uid://c55qm4pbn7m36" path="res://assets/fullasset/ROTATE DIRECTION.png" id="10_wfx2f"]
+[ext_resource type="Texture2D" uid="uid://clpb8qrm1qhfa" path="res://assets/fullasset/RIGHT SPEED+.png" id="11_tgmrj"]
+[ext_resource type="Texture2D" uid="uid://d2xqsrgd2jaib" path="res://assets/fullasset/LEFT SPEED -.png" id="12_jkafp"]
+[ext_resource type="Texture2D" uid="uid://oln6do1c0p1m" path="res://assets/fullasset/Down level-.png" id="12_td8vb"]
+[ext_resource type="Texture2D" uid="uid://cds8t76m4xgvj" path="res://assets/fullasset/Quick down levels+.png" id="13_btuok"]
+[ext_resource type="Texture2D" uid="uid://c5l8sw7o7srje" path="res://assets/fullasset/SOUND.png" id="16_r5nef"]
+[ext_resource type="Texture2D" uid="uid://cdr6bh6044273" path="res://assets/fullasset/PAUSE START.png" id="17_707w8"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_nfwd1")
@@ -25,3 +38,105 @@ z_index = -6
 position = Vector2(328.336, 346.285)
 scale = Vector2(1.49, 1.33)
 texture = ExtResource("3_nmvkh")
+
+[node name="TetrisMachine" type="Sprite2D" parent="."]
+position = Vector2(1034, 703)
+texture = ExtResource("6_kmkoh")
+
+[node name="ButtonsGroup" type="Node2D" parent="."]
+position = Vector2(28, 28)
+
+[node name="SmallButton" parent="ButtonsGroup" instance=ExtResource("7_6d42k")]
+offset_left = 466.0
+offset_top = 897.0
+offset_right = 548.0
+offset_bottom = 979.0
+texture_normal = ExtResource("8_glm31")
+
+[node name="PauseStart" type="Sprite2D" parent="ButtonsGroup/SmallButton"]
+position = Vector2(41.0001, -32)
+scale = Vector2(0.42219, 0.42219)
+texture = ExtResource("17_707w8")
+
+[node name="SmallButton2" parent="ButtonsGroup" instance=ExtResource("7_6d42k")]
+offset_left = 548.0
+offset_top = 897.0
+offset_right = 630.0
+offset_bottom = 979.0
+
+[node name="Sound" type="Sprite2D" parent="ButtonsGroup/SmallButton2"]
+position = Vector2(42.9999, -36.9999)
+scale = Vector2(0.512316, 0.512316)
+texture = ExtResource("16_r5nef")
+
+[node name="SmallButton3" parent="ButtonsGroup" instance=ExtResource("7_6d42k")]
+offset_left = 385.0
+offset_top = 897.0
+offset_right = 467.0
+offset_bottom = 979.0
+texture_normal = ExtResource("7_fnhen")
+
+[node name="Reset" type="Sprite2D" parent="ButtonsGroup/SmallButton3"]
+position = Vector2(39, -32)
+scale = Vector2(0.392261, 0.392261)
+texture = ExtResource("9_lbit0")
+
+[node name="Button" parent="ButtonsGroup" instance=ExtResource("5_l7y8e")]
+offset_left = 427.0
+offset_top = 985.0
+offset_right = 549.0
+offset_bottom = 1107.0
+scale = Vector2(1.37698, 1.37698)
+
+[node name="RotateDirection" type="Sprite2D" parent="ButtonsGroup/Button"]
+position = Vector2(58.098, 148.876)
+scale = Vector2(0.46495, 0.46495)
+texture = ExtResource("10_wfx2f")
+
+[node name="Button2" parent="ButtonsGroup" instance=ExtResource("5_l7y8e")]
+offset_left = 101.0
+offset_top = 897.0
+offset_right = 223.0
+offset_bottom = 1019.0
+scale = Vector2(0.724868, 0.724868)
+
+[node name="QuickDownLevels+" type="Sprite2D" parent="ButtonsGroup/Button2"]
+position = Vector2(148.993, -34.4891)
+scale = Vector2(0.420499, 0.420499)
+texture = ExtResource("13_btuok")
+
+[node name="Button3" parent="ButtonsGroup" instance=ExtResource("5_l7y8e")]
+offset_left = 101.0
+offset_top = 1028.0
+offset_right = 223.0
+offset_bottom = 1150.0
+scale = Vector2(0.724868, 0.724868)
+
+[node name="DownLevel-" type="Sprite2D" parent="ButtonsGroup/Button3"]
+position = Vector2(100.708, 164.168)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_td8vb")
+
+[node name="Button4" parent="ButtonsGroup" instance=ExtResource("5_l7y8e")]
+offset_left = 174.0
+offset_top = 960.0
+offset_right = 296.0
+offset_bottom = 1082.0
+scale = Vector2(0.724868, 0.724868)
+
+[node name="RightSpeed+" type="Sprite2D" parent="ButtonsGroup/Button4"]
+position = Vector2(182.102, 0.00012207)
+scale = Vector2(0.432, 0.5)
+texture = ExtResource("11_tgmrj")
+
+[node name="Button5" parent="ButtonsGroup" instance=ExtResource("5_l7y8e")]
+offset_left = 25.0
+offset_top = 960.0
+offset_right = 147.0
+offset_bottom = 1082.0
+scale = Vector2(0.724868, 0.724868)
+
+[node name="LeftSpeed-" type="Sprite2D" parent="ButtonsGroup/Button5"]
+position = Vector2(37.2482, 155.89)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_jkafp")
