@@ -1,7 +1,7 @@
 extends Node2D
 class_name Board
 
-@export var board_rows = 14
+@export var board_rows = 16
 @export var board_cols = 10
 var board_width = board_cols * Global.CELL_SIZE
 var board_height = board_rows * Global.CELL_SIZE
@@ -38,7 +38,7 @@ func draw_board():
 			var pos = map_to_world(Vector2(col, row))
 			var tile =  preload("res://Board/board_tile.tscn").instantiate()
 			add_child(tile)
-			tile.global_position = pos+position
+			tile.global_position = pos
 
 func spawn_block(): 
 	var i = randi()%7

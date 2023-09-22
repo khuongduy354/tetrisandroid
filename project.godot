@@ -21,6 +21,13 @@ Global="*res://Global.gd"
 Events="*res://Events.gd"
 SfxManager="*res://sfx_manager.tscn"
 
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=1152
+window/stretch/mode="canvas_items"
+window/handheld/orientation=1
+
 [input]
 
 instant_down={

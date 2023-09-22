@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://daougduibcnce"]
 
-[ext_resource type="Texture2D" uid="uid://bae6mwpwktfsg" path="res://assets/Main Board.png" id="1_yolro"]
+[ext_resource type="Texture2D" uid="uid://x1ixjw1my4sf" path="res://assets/fullasset/Block.png" id="1_8aer2"]
 
-[node name="BoardTile" type="Sprite2D"]
+[node name="board_tile" type="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0.1)
 position = Vector2(16, 16)
-texture = ExtResource("1_yolro")
-region_enabled = true
-region_rect = Rect2(64, 64, 32, 32)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_8aer2")
