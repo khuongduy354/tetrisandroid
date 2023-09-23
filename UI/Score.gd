@@ -1,11 +1,13 @@
 extends Control
-var score = 0
+var score = 0:set=set_score
 func _ready():
 	Events.scored.connect(Callable(self,"_on_scored"))
-	
+	Events.game_over.connect(func():score=0)
+func set_score(s:int): 
+	score = s
+	load_score(score)
 func _on_scored(_score): 
 	score+=_score
-	load_score(score)
 func clear_score_UI(): 
 	for child in $realscores.get_children():
 		child.queue_free()
