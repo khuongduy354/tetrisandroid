@@ -3,42 +3,55 @@ class_name Board
 
 @export var board_rows = 16
 @export var board_cols = 10
+@onready var anim_p = $AnimationPlayer
+
 var board_width = board_cols * Global.CELL_SIZE
 var board_height = board_rows * Global.CELL_SIZE
 var still_tiles = []
 
+var game_paused = false
+
 
 func _ready(): 
 	draw_board()
-	start_game()
-	Events.connect("game_over",func():pause_game())
+	Events.connect("game_over",func():reset_game())
 	Events.connect("to_still",Callable(self,"_on_to_still"))
 
 
 # main features
+func modulate_on(): 
+	for child in $BoardTiles.get_children(): 
+		child.self_modulate = Color(1,1,1,1)
+func modulate_off(): 
+	for child in $BoardTiles.get_children(): 
+		child.self_modulate = Color(1,1,1,0.1)
 func start_game(): 
 	spawn_block()
+
 func reset_game(): 
+	SfxManager.play(SfxManager.GAMEOVER)
+	anim_p.play("modulate_onoff")
 	next_block=null
 	still_tiles=[]
 	for block in $Blocks.get_children(): 
 		block.queue_free()
-	start_game()
 func resume_game(): 
 	for block in $Blocks.get_children(): 
 		block.set_physics_process(true)
 		block.get_node("down_timer").start()
+	game_paused=false
 func pause_game(): 
 	for block in $Blocks.get_children(): 
 		block.set_physics_process(false)
 		block.get_node("down_timer").stop()
+	game_paused = true
 		
 func draw_board(): 
 	for row in range(board_rows): 
 		for col in range(board_cols): 
 			var pos = map_to_world(Vector2(col, row))
 			var tile =  preload("res://Board/board_tile.tscn").instantiate()
-			add_child(tile)
+			$BoardTiles.add_child(tile)
 			tile.global_position = pos
 var next_block=null
 func pick_block(): 
@@ -185,3 +198,8 @@ func _on_to_still(tiles):
 	if check_fail(): 
 		return
 	spawn_block()
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name =="modulate_onoff":
+		start_game()

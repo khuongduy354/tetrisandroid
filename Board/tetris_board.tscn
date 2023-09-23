@@ -1,6 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjn6k2mcog3pr"]
+[gd_scene load_steps=4 format=3 uid="uid://bjn6k2mcog3pr"]
 
 [ext_resource type="Script" path="res://Board/tetris_board.gd" id="1_yvwea"]
+
+[sub_resource type="Animation" id="Animation_ppwi5"]
+resource_name = "modulate_onoff"
+length = 2.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"modulate_on"
+}, {
+"args": [],
+"method": &"modulate_off"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rncpu"]
+_data = {
+"modulate_onoff": SubResource("Animation_ppwi5")
+}
 
 [node name="TetrisBoard" type="Node2D"]
 script = ExtResource("1_yvwea")
@@ -10,3 +36,12 @@ position = Vector2(128, 32)
 
 [node name="Blocks" type="Node2D" parent="."]
 z_index = 2
+
+[node name="BoardTiles" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rncpu")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

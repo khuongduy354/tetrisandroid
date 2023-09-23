@@ -110,7 +110,7 @@ func _physics_process(delta):
 		return
 	if Input.is_action_just_pressed("instant_down"):
 		instant_down()
-	if Input.is_action_pressed("ui_down"): 
+	if Input.is_action_just_pressed("ui_down"): 
 		if $down_cooldown.is_stopped():
 			down()
 			$down_timer.stop()
@@ -119,11 +119,11 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_up"): 
 		if !rotating: 
 			rotate_block()
-	if Input.is_action_pressed("ui_left"): 
+	if Input.is_action_just_pressed("ui_left"): 
 		if $down_cooldown.is_stopped() :
 			left()
 			$down_cooldown.start()
-	if Input.is_action_pressed("ui_right"): 
+	if Input.is_action_just_pressed("ui_right"): 
 		if $down_cooldown.is_stopped():
 			right()
 			$down_cooldown.start()
