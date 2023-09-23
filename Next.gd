@@ -2,6 +2,8 @@ extends Sprite2D
 
 func _ready():
 	Events.next.connect(Callable(self,"_on_next"))
+	Events.game_over.connect(Callable(self,"clear_current_block"))
+	
 func clear_current_block(): 
 	for child in get_children(): 
 		if child is Block: 

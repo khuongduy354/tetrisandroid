@@ -20,7 +20,7 @@ volume_db = 2.506
 
 [node name="click" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_frrly")
-volume_db = 10.024
+volume_db = 4.0
 
 [node name="gameover" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_b6rwm")
