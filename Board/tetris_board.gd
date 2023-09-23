@@ -1,6 +1,8 @@
 extends Node2D
 class_name Board
 
+
+
 @export var board_rows = 16
 @export var board_cols = 10
 @onready var anim_p = $AnimationPlayer
@@ -10,7 +12,7 @@ var board_height = board_rows * Global.CELL_SIZE
 var still_tiles = []
 
 var game_paused = false
-
+var current_block = null
 
 func _ready(): 
 	draw_board()
@@ -32,6 +34,7 @@ func reset_game():
 	SfxManager.play(SfxManager.GAMEOVER)
 	anim_p.play("modulate_onoff")
 	next_block=null
+	current_block=null
 	still_tiles=[]
 	for block in $Blocks.get_children(): 
 		block.queue_free()
@@ -81,6 +84,7 @@ func spawn_block():
 		pick_block()
 	$Blocks.add_child(next_block)
 	next_block.global_position = $spawn_pos.global_position
+	current_block=next_block
 	next_block = null
 	pick_block()
 # checkers 

@@ -24,34 +24,37 @@ func _on_sound_pressed():
 
 
 func _on_reset_pressed():
-	board.reset_game()
+	Events.game_over.emit()
 	cs()
 	pass # Replace with function body.
 
 
 func _on_rotate_pressed():
-	Input.action_press("ui_up")
+	if board.current_block: 
+		board.current_block.rotate_block()
 	cs()
 	pass # Replace with function body.
 
 	
 func _on_down_pressed():
-	Input.action_press("instant_down")
-	pass # Replace with function body.
+	if board.current_block: 
+		board.current_block.instant_down()
+	pass # Rt55eplace with function body.
 
 
 func _on_slow_down_pressed():
-	Input.action_press("ui_down")
-	
+	if board.current_block: 
+		board.current_block.down()
 	pass # Replace with function body.
 
 
 func _on_right_pressed():
-	Input.action_press("ui_right")
-	
+	if board.current_block: 
+		board.current_block.right()
 	pass # Replace with function body.
 
 
 func _on_left_pressed():
-	Input.action_press("ui_left")
+	if board.current_block: 
+		board.current_block.left()
 	pass # Replace with function body.

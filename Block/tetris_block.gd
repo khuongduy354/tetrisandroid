@@ -4,8 +4,10 @@ class_name Block
 var still =false 
 var board:Board = null
 
+
 func _initialize(b:Board):
-	board = b 
+	board = b
+
 
 func _ready(): 
 	pass
@@ -45,11 +47,9 @@ func set_still():
 	
 var rotating = false 
 func instant_down(): 
-	if rotating:
+	if rotating or still:
 		return 
 	
-
-
 	# collisions 
 	while true:
 		for tile in $BlockTiles.get_children(): 
@@ -63,7 +63,7 @@ func instant_down():
 		$BlockTiles.global_position = next_pos
 
 func down(): 
-	if rotating:
+	if rotating or still:
 		return 
 
 	var next_pos =Vector2($BlockTiles.global_position.x,$BlockTiles.global_position.y + Global.CELL_SIZE)
@@ -76,7 +76,11 @@ func down():
 			return 
 	SfxManager.play(SfxManager.MOVEMENT)
 	$BlockTiles.global_position = next_pos
+	$down_timer.stop()
+	$down_timer.start()
 func left():
+	if still or rotating: 
+		return
 	var next_pos = Vector2($BlockTiles.global_position.x-Global.CELL_SIZE, $BlockTiles.global_position.y)
 	
 	# collision 
@@ -87,6 +91,8 @@ func left():
 	SfxManager.play(SfxManager.MOVEMENT)
 	$BlockTiles.global_position = next_pos
 func right(): 
+	if still or rotating: 
+		return
 	var next_pos = Vector2($BlockTiles.global_position.x+Global.CELL_SIZE,$BlockTiles.global_position.y)
 	
 	# collision 
@@ -98,6 +104,8 @@ func right():
 	$BlockTiles.global_position = next_pos
 
 func rotate_block(): 
+	if still: 
+		return
 	rotating = true 
 	
 	board.check_tile_colliding_rotation($BlockTiles,90)
@@ -108,28 +116,26 @@ func print_tiles():
 	for tile in $BlockTiles.get_children(): 
 		print(board.map_to_board(tile.global_position))
 func _physics_process(delta):
-	if still or rotating: 
-		return
-	if Input.is_action_just_pressed("instant_down"):
-		instant_down()
-	if Input.is_action_just_pressed("ui_down"): 
-		if $down_cooldown.is_stopped():
-			down()
-			$down_timer.stop()
-			$down_timer.start()
-			$down_cooldown.start()
-	if Input.is_action_just_pressed("ui_up"): 
-		if !rotating: 
-			rotate_block()
-	if Input.is_action_just_pressed("ui_left"): 
-		if $down_cooldown.is_stopped() :
-			left()
-			$down_cooldown.start()
-	if Input.is_action_just_pressed("ui_right"): 
-		if $down_cooldown.is_stopped():
-			right()
-			$down_cooldown.start()
-			
+	pass
+#	if Input.is_action_just_pressed("instant_down"):
+#		instant_down()
+#	if Input.is_action_just_pressed("ui_down"): 
+#		if $down_cooldown.is_stopped():
+#			down()
+#
+#			$down_cooldown.start()
+#	if Input.is_action_just_pressed("ui_up"): 
+#		if !rotating: 
+#			rotate_block()
+#	if Input.is_action_just_pressed("ui_left"): 
+#		if $down_cooldown.is_stopped() :
+#			left()
+#			$down_cooldown.start()
+#	if Input.is_action_just_pressed("ui_right"): 
+#		if $down_cooldown.is_stopped():
+#			right()
+#			$down_cooldown.start()
+#
 
 func _on_down_timer_timeout():
 	if still or rotating: 
