@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://cdr6bh6044273" path="res://assets/fullasset/PAUSE START.png" id="17_707w8"]
 [ext_resource type="Texture2D" uid="uid://dh0qjjdhufbo3" path="res://assets/fullasset/NEXT_.png" id="17_qywwd"]
 [ext_resource type="Texture2D" uid="uid://ba15euns8yv3n" path="res://assets/fullasset/SCORE.png" id="18_387oi"]
-[ext_resource type="Script" path="res://Next.gd" id="18_djmah"]
+[ext_resource type="Script" path="res://UI/Next.gd" id="18_vkldv"]
 [ext_resource type="PackedScene" uid="uid://b0lnutb2khtxu" path="res://UI/Score.tscn" id="19_y8m2m"]
 
 [node name="Game" type="Node2D"]
@@ -119,7 +119,7 @@ texture = ExtResource("12_jkafp")
 [node name="Next" type="Sprite2D" parent="."]
 position = Vector2(536, 405)
 texture = ExtResource("17_qywwd")
-script = ExtResource("18_djmah")
+script = ExtResource("18_vkldv")
 
 [node name="Marker2D" type="Marker2D" parent="Next"]
 position = Vector2(-7, 83)
@@ -133,6 +133,15 @@ offset_left = 455.0
 offset_top = 209.0
 offset_right = 455.0
 offset_bottom = 209.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(362, 637)
+offset = Vector2(0, -9)
+zoom = Vector2(1.02, 1.02)
+limit_left = 0
+limit_top = 0
+limit_right = 720
+limit_bottom = 1280
 
 [connection signal="pressed" from="ButtonsGroup/SmallButton" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="ButtonsGroup/SmallButton" to="." method="_on_small_button_pressed"]

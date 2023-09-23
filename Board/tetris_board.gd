@@ -140,6 +140,7 @@ func check_lines(blocktiles):
 				for block in $Blocks.get_children():
 					block.clear_tile(Vector2(x,y))
 		SfxManager.play(SfxManager.CLEAR)
+		await get_tree().create_timer(0.6).timeout
 	# shift
 		for i in range(lines_cleared_list.size()):
 			var base_line = lines_cleared_list[i] 

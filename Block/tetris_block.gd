@@ -19,8 +19,8 @@ func clear_tile(pos):
 	for tile in $BlockTiles.get_children(): 
 		var tile_pos =  board.map_to_board(tile.global_position)
 		if tile_pos == pos: 
-			$BlockTiles.remove_child(tile)
-			tile.queue_free()
+			tile.get_node("AnimationPlayer").play("flashing")
+			await tile.get_node("AnimationPlayer").animation_finished
 			if $BlockTiles.get_child_count() ==0: 
 				queue_free()
 			return tile
