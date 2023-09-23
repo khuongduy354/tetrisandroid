@@ -169,7 +169,7 @@ func map_to_world(coor:Vector2):
 	var world_pos = coor * Global.CELL_SIZE+Vector2(Global.HALF_CELLSIZE,Global.HALF_CELLSIZE)
 	return world_pos+global_position
 func is_border(test_pos): 
-	if test_pos.y >= board_rows or test_pos.x < 0 or test_pos.x >= board_cols: 
+	if test_pos.y >= board_rows or test_pos.x < 0 or test_pos.x >= board_cols or test_pos.y < 0: 
 		return true
 	return false
 func tile_in_list(pos): 
@@ -194,8 +194,8 @@ func print_still_board():
 func _on_to_still(tiles): 
 	for tile in tiles.get_children(): 
 		still_tiles.push_back(tile)
-	check_lines(tiles)
 	Events.scored.emit(10)
+	check_lines(tiles)
 	if check_fail(): 
 		return
 	spawn_block()

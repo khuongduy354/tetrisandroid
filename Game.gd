@@ -34,14 +34,9 @@ func _on_rotate_pressed():
 	cs()
 	pass # Replace with function body.
 
-func shakey(): 
-	$Camera2D.offset.y=-10
-#	await get_tree().create_timer(0.1).timeout
-#	$Camera2D.offset.y=0
 	
 func _on_down_pressed():
 	Input.action_press("instant_down")
-	shakey()
 	pass # Replace with function body.
 
 

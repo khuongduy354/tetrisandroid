@@ -81,7 +81,7 @@ scale = Vector2(0.46495, 0.46495)
 texture = ExtResource("10_wfx2f")
 
 [node name="Button2" parent="ButtonsGroup" instance=ExtResource("5_l7y8e")]
-position = Vector2(70, 912)
+position = Vector2(76, 910)
 scale = Vector2(0.724868, 0.724868)
 
 [node name="QuickDownLevels+" type="Sprite2D" parent="ButtonsGroup/Button2"]
@@ -90,7 +90,7 @@ scale = Vector2(0.420499, 0.420499)
 texture = ExtResource("13_btuok")
 
 [node name="Button3" parent="ButtonsGroup" instance=ExtResource("5_l7y8e")]
-position = Vector2(69, 1046)
+position = Vector2(75, 1044)
 scale = Vector2(0.724868, 0.724868)
 
 [node name="DownLevel-" type="Sprite2D" parent="ButtonsGroup/Button3"]
@@ -99,7 +99,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("12_td8vb")
 
 [node name="Button4" parent="ButtonsGroup" instance=ExtResource("5_l7y8e")]
-position = Vector2(139, 979)
+position = Vector2(145, 977)
 scale = Vector2(0.724868, 0.724868)
 
 [node name="RightSpeed+" type="Sprite2D" parent="ButtonsGroup/Button4"]
@@ -108,7 +108,7 @@ scale = Vector2(0.432, 0.5)
 texture = ExtResource("11_tgmrj")
 
 [node name="Button5" parent="ButtonsGroup" instance=ExtResource("5_l7y8e")]
-position = Vector2(0, 979)
+position = Vector2(6, 977)
 scale = Vector2(0.724868, 0.724868)
 
 [node name="LeftSpeed-" type="Sprite2D" parent="ButtonsGroup/Button5"]
@@ -133,15 +133,6 @@ offset_left = 455.0
 offset_top = 209.0
 offset_right = 455.0
 offset_bottom = 209.0
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(362, 637)
-offset = Vector2(0, -9)
-zoom = Vector2(1.02, 1.02)
-limit_left = 0
-limit_top = 0
-limit_right = 720
-limit_bottom = 1280
 
 [connection signal="pressed" from="ButtonsGroup/SmallButton" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="ButtonsGroup/SmallButton" to="." method="_on_small_button_pressed"]

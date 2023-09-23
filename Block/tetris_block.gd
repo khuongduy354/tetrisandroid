@@ -10,6 +10,8 @@ func _initialize(b:Board):
 func _ready(): 
 	pass
 func drop_tile(baseline): 
+	if !still: 
+		return
 	for tile in $BlockTiles.get_children(): 
 		var pos = board.map_to_board(tile.global_position)
 		if pos.y < baseline: 
