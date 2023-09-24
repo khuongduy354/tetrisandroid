@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://btlvn1d7nrhdg"]
+[gd_scene load_steps=25 format=3 uid="uid://btlvn1d7nrhdg"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_nfwd1"]
 [ext_resource type="PackedScene" uid="uid://bjn6k2mcog3pr" path="res://Board/tetris_board.tscn" id="1_nwyf8"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://blx508u5exqs" path="res://UI/small_button.tscn" id="7_6d42k"]
 [ext_resource type="Texture2D" uid="uid://c7gnck0cgh81v" path="res://assets/fullasset/Red but.png" id="7_fnhen"]
 [ext_resource type="Texture2D" uid="uid://tlmfsww62qh1" path="res://assets/fullasset/Ellipse 1 copy 2.png" id="8_glm31"]
+[ext_resource type="Texture2D" uid="uid://ba0ob5xie34yg" path="res://assets/fullasset/OPTIONS.png" id="9_0ao7u"]
 [ext_resource type="Texture2D" uid="uid://dvsly6fi7uxqh" path="res://assets/fullasset/RESET.png" id="9_lbit0"]
 [ext_resource type="Texture2D" uid="uid://c55qm4pbn7m36" path="res://assets/fullasset/ROTATE DIRECTION.png" id="10_wfx2f"]
 [ext_resource type="Texture2D" uid="uid://clpb8qrm1qhfa" path="res://assets/fullasset/RIGHT SPEED+.png" id="11_tgmrj"]
@@ -20,15 +21,20 @@
 [ext_resource type="Texture2D" uid="uid://ba15euns8yv3n" path="res://assets/fullasset/SCORE.png" id="18_387oi"]
 [ext_resource type="Script" path="res://UI/Next.gd" id="18_vkldv"]
 [ext_resource type="PackedScene" uid="uid://b0lnutb2khtxu" path="res://UI/Score.tscn" id="19_y8m2m"]
+[ext_resource type="Texture2D" uid="uid://by01stw1ylrrk" path="res://assets/fullasset/soundicon.png" id="21_ynlc6"]
+[ext_resource type="Texture2D" uid="uid://dn4voemtgrmk7" path="res://assets/fullasset/pauseicon.png" id="22_r87wv"]
+[ext_resource type="PackedScene" uid="uid://qysmkiwwhk6f" path="res://UI/option_panel.tscn" id="24_rf45p"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_nfwd1")
 
 [node name="BigMachine" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.0784314, 0.0784314, 1)
 z_index = -29
-position = Vector2(349.274, 639.715)
+position = Vector2(391, 900)
 scale = Vector2(1.51735, 1.38003)
 texture = ExtResource("4_65bfw")
+offset = Vector2(-27.4993, -188.608)
 
 [node name="MainScreen" type="Node2D" parent="."]
 position = Vector2(25.2737, -20.2854)
@@ -46,24 +52,40 @@ texture = ExtResource("3_nmvkh")
 position = Vector2(28, 28)
 
 [node name="SmallButton" parent="ButtonsGroup" instance=ExtResource("7_6d42k")]
-position = Vector2(486, 897)
+position = Vector2(405, 880)
 texture_normal = ExtResource("8_glm31")
 
 [node name="PauseStart" type="Sprite2D" parent="ButtonsGroup/SmallButton"]
-position = Vector2(41.0001, -32)
+position = Vector2(45, -22)
 scale = Vector2(0.42219, 0.42219)
 texture = ExtResource("17_707w8")
+vframes = 2
+
+[node name="PauseStart2" type="Sprite2D" parent="ButtonsGroup/SmallButton"]
+position = Vector2(45, -37)
+scale = Vector2(0.42219, 0.42219)
+texture = ExtResource("17_707w8")
+vframes = 2
+frame = 1
 
 [node name="SmallButton2" parent="ButtonsGroup" instance=ExtResource("7_6d42k")]
-position = Vector2(575, 897)
+position = Vector2(498, 880)
 
 [node name="Sound" type="Sprite2D" parent="ButtonsGroup/SmallButton2"]
-position = Vector2(42.9999, -36.9999)
-scale = Vector2(0.512316, 0.512316)
+position = Vector2(42, -23)
+scale = Vector2(0.345494, 0.345494)
 texture = ExtResource("16_r5nef")
 
+[node name="SmallButton4" parent="ButtonsGroup" instance=ExtResource("7_6d42k")]
+position = Vector2(591, 880)
+
+[node name="Sound" type="Sprite2D" parent="ButtonsGroup/SmallButton4"]
+position = Vector2(43, -20)
+scale = Vector2(0.347402, 0.347402)
+texture = ExtResource("9_0ao7u")
+
 [node name="SmallButton3" parent="ButtonsGroup" instance=ExtResource("7_6d42k")]
-position = Vector2(393, 897)
+position = Vector2(312, 880)
 texture_normal = ExtResource("7_fnhen")
 
 [node name="Reset" type="Sprite2D" parent="ButtonsGroup/SmallButton3"]
@@ -72,7 +94,7 @@ scale = Vector2(0.392261, 0.392261)
 texture = ExtResource("9_lbit0")
 
 [node name="Button" parent="ButtonsGroup" instance=ExtResource("5_l7y8e")]
-position = Vector2(450, 978)
+position = Vector2(417, 977)
 scale = Vector2(1.37698, 1.37698)
 
 [node name="RotateDirection" type="Sprite2D" parent="ButtonsGroup/Button"]
@@ -117,7 +139,8 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("12_jkafp")
 
 [node name="Next" type="Sprite2D" parent="."]
-position = Vector2(536, 405)
+position = Vector2(534, 416)
+scale = Vector2(0.664371, 0.664371)
 texture = ExtResource("17_qywwd")
 script = ExtResource("18_vkldv")
 
@@ -126,17 +149,34 @@ position = Vector2(-7, 83)
 
 [node name="Score" type="Sprite2D" parent="."]
 position = Vector2(529, 131)
+scale = Vector2(0.599187, 0.599187)
 texture = ExtResource("18_387oi")
 
 [node name="Score2" parent="." instance=ExtResource("19_y8m2m")]
-offset_left = 455.0
-offset_top = 209.0
-offset_right = 455.0
-offset_bottom = 209.0
+offset_left = 494.0
+offset_top = 183.0
+offset_right = 494.0
+offset_bottom = 183.0
+scale = Vector2(0.495072, 0.495072)
 
-[connection signal="pressed" from="ButtonsGroup/SmallButton" to="." method="_on_small_button_pressed"]
+[node name="Soundicon" type="Sprite2D" parent="."]
+position = Vector2(509, 562)
+scale = Vector2(0.0437818, 0.0437818)
+texture = ExtResource("21_ynlc6")
+
+[node name="Pauseicon" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.1)
+position = Vector2(553, 562)
+scale = Vector2(0.0802631, 0.0802631)
+texture = ExtResource("22_r87wv")
+
+[node name="OptionPanel" parent="." instance=ExtResource("24_rf45p")]
+visible = false
+
 [connection signal="pressed" from="ButtonsGroup/SmallButton" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="ButtonsGroup/SmallButton" to="." method="_on_small_button_pressed"]
 [connection signal="pressed" from="ButtonsGroup/SmallButton2" to="." method="_on_sound_pressed"]
+[connection signal="pressed" from="ButtonsGroup/SmallButton4" to="." method="_on_small_button_4_pressed"]
 [connection signal="pressed" from="ButtonsGroup/SmallButton3" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="ButtonsGroup/Button" to="." method="_on_rotate_pressed"]
 [connection signal="pressed" from="ButtonsGroup/Button2" to="." method="_on_down_pressed"]

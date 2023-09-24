@@ -11,7 +11,12 @@ var board_width = board_cols * Global.CELL_SIZE
 var board_height = board_rows * Global.CELL_SIZE
 var still_tiles = []
 
-var game_paused = false
+var game_paused = false :set = set_pause 
+signal is_paused
+func set_pause(val): 
+	game_paused = val 
+	is_paused.emit(game_paused)
+
 var current_block = null
 
 func _ready(): 
@@ -28,6 +33,7 @@ func modulate_off():
 	for child in $BoardTiles.get_children(): 
 		child.self_modulate = Color(1,1,1,0.1)
 func start_game(): 
+	game_paused = false
 	spawn_block()
 
 func reset_game(): 
