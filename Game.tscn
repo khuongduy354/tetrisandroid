@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://btlvn1d7nrhdg"]
+[gd_scene load_steps=27 format=3 uid="uid://btlvn1d7nrhdg"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_nfwd1"]
 [ext_resource type="PackedScene" uid="uid://bjn6k2mcog3pr" path="res://Board/tetris_board.tscn" id="1_nwyf8"]
@@ -24,6 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://by01stw1ylrrk" path="res://assets/fullasset/soundicon.png" id="21_ynlc6"]
 [ext_resource type="Texture2D" uid="uid://dn4voemtgrmk7" path="res://assets/fullasset/pauseicon.png" id="22_r87wv"]
 [ext_resource type="PackedScene" uid="uid://qysmkiwwhk6f" path="res://UI/option_panel.tscn" id="24_rf45p"]
+[ext_resource type="Texture2D" uid="uid://bqx6tppp0myp8" path="res://assets/fullasset/LEVELS_.png" id="25_qncv5"]
+[ext_resource type="Texture2D" uid="uid://btg4p7fskdv7g" path="res://assets/fullasset/1.png" id="26_3ovps"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_nfwd1")
@@ -139,8 +141,8 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("12_jkafp")
 
 [node name="Next" type="Sprite2D" parent="."]
-position = Vector2(534, 416)
-scale = Vector2(0.664371, 0.664371)
+position = Vector2(530, 395)
+scale = Vector2(0.545814, 0.545814)
 texture = ExtResource("17_qywwd")
 script = ExtResource("18_vkldv")
 
@@ -148,15 +150,15 @@ script = ExtResource("18_vkldv")
 position = Vector2(-7, 83)
 
 [node name="Score" type="Sprite2D" parent="."]
-position = Vector2(529, 131)
-scale = Vector2(0.599187, 0.599187)
+position = Vector2(526, 105)
+scale = Vector2(0.461873, 0.461873)
 texture = ExtResource("18_387oi")
 
 [node name="Score2" parent="." instance=ExtResource("19_y8m2m")]
-offset_left = 494.0
-offset_top = 183.0
-offset_right = 494.0
-offset_bottom = 183.0
+offset_left = 491.0
+offset_top = 150.0
+offset_right = 491.0
+offset_bottom = 150.0
 scale = Vector2(0.495072, 0.495072)
 
 [node name="Soundicon" type="Sprite2D" parent="."]
@@ -172,6 +174,16 @@ texture = ExtResource("22_r87wv")
 
 [node name="OptionPanel" parent="." instance=ExtResource("24_rf45p")]
 visible = false
+
+[node name="Levels" type="Sprite2D" parent="."]
+position = Vector2(532, 260)
+scale = Vector2(0.460016, 0.460016)
+texture = ExtResource("25_qncv5")
+
+[node name="1" type="Sprite2D" parent="Levels"]
+position = Vector2(63.5436, 88.255)
+scale = Vector2(0.881159, 0.881159)
+texture = ExtResource("26_3ovps")
 
 [connection signal="pressed" from="ButtonsGroup/SmallButton" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="ButtonsGroup/SmallButton" to="." method="_on_small_button_pressed"]

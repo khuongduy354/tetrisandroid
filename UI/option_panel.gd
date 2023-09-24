@@ -38,3 +38,12 @@ func _on_ok_pressed():
 func _on_exit_pressed():
 	get_tree().quit()
 	pass # Replace with function body.
+
+
+func _on_rate_us_pressed():
+	if OS.get_name() == "iOS":
+		OS.shell_open("https://itunes.apple.com/app/idYOUR_APP_ID?action=write-review")
+	else:
+		OS.shell_open("https://play.google.com/store/apps/details?id=YOUR_PACKAGE_NAME")
+
+	pass # Replace with function body.
