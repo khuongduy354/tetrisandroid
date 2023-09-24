@@ -89,8 +89,12 @@ func _on_left_pressed():
 func _on_close_panel(): 
 	board.resume_game()
 
+ 
+
 func _on_small_button_4_pressed():
 	# OPTION button 
+	if board.anim_p.current_animation == "modulate_onoff": 
+		return
 	board.pause_game()
 	$OptionPanel.visible = true
 	pass 
